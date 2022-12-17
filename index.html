@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VLS - Christmas Wishes</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body onload="writetext()" bgcolor="#fff" text="#2b8a3e">
+    <!-- partial:index.partial.html -->
+    <div id="particles-js" class="snow"></div>
+    <div class="trees">
+      <div class="merry">
+        <h1>Merry Christmas</h1>
+      </div>
+      <div class="fox">
+        <img
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/25839/critters.svg"
+          width="300px"
+        />
+      </div>
+
+      <div class="tree">
+        <img
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/25839/tree.svg"
+          width="200px"
+        />
+      </div>
+      <div id="nothing" style="font-family: 'Courier'">
+        <h2>
+          <font face="Courier"><center></center></font>
+        </h2>
+        <p>
+          <font face="Courier"
+            ><b><font color="#000" face="Courier"> </font></b
+          ></font>
+        </p>
+        <p>
+          <font face="Courier"
+            ><b><b></b></b
+          ></font>
+        </p>
+      </div>
+    </div>
+    <!-- partial -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
+    <script src="./script.js"></script>
+    <script language="JavaScript">
+      msg = new Array(); //strings written in screen
+      msg[0] =
+        "<h2><font face='Courier'><center>---==[To Hoang Diem]==---</center></h2>";
+      msg[1] =
+        "<b> I wish you a <font face='Courier' ='#c92a2a'> Merry Christmas </font>";
+      msg[2] = "<font face='Courier'Do Not Forger  ... </font> </b>";
+      msg[3] =
+        "<b> < My message : <font face='Courier' ='#c92a2a'>Gọi em là Noel..! Bởi vì...! Em dáng xinh <3</font>";
+      msg[4] =
+        "<b> Send by : <font face='Courier' color='#c92a2a'> Vương Lê SƠn </font>";
+
+      text1 = ""; //the same as text2, only the last character is highlighted
+      text2 = ""; //current string, which will be written
+      count = 0; //char index in string text
+      count2 = 0; //number of strings
+
+      text = msg[0].split(""); //text - string written
+
+      function writetext() {
+        //show strings above on screen
+        text1 = text2 + "<font color='#c92a2a'>" + text[count] + "</font>";
+        text2 += text[count];
+        document.all["nothing"].innerHTML = text1; //where to write
+
+        if (count < text.length - 1) {
+          count++;
+          setTimeout("writetext()", 25);
+        } else {
+          //if this string is written, get the new string
+          count = 0;
+
+          if (count2 != 4) {
+            //write 4 strings
+            count2++;
+            text2 += "<p>"; //a new line
+            text = eval("msg[" + count2 + '].split("")'); //get the new string to text
+            setTimeout("writetext()", 25);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
